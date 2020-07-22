@@ -9,6 +9,17 @@
       "title": "test",
       "description": "test",
       "id": 2
+    },
+    {
+      "title": "smth",
+      "description": "smthDes",
+      "id": 3
+    },
+    {
+      "title": "My stream",
+      "description": "Under sign in",
+      "userId": "101773109164987828234",
+      "id": 4
     }
   ]
 }
