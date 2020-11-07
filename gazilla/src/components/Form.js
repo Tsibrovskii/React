@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DateTimePicker from 'react-datetime-picker';
+import Modal from './Modal';
+import axios from 'axios';
 
 const Form = () => {
   const [canSubmit, setSubmit] = useState(false);
@@ -7,13 +9,26 @@ const Form = () => {
   const [dateTime, setDateTime] = useState(null);
   const [comment, setComment] = useState('');
   const [isAgree, setIsAgree] = useState(false);
+  const [modal, setModal] = useState(false);
 
   useEffect(() => {
     setSubmit(phone && dateTime && isAgree);
   }, [phone, dateTime, isAgree]);
-  
+
   const onSubmit = () => {
-    console.log('hi there');
+    const requestBody = {
+      id: 1,
+      'data': {
+        'phone': phone,
+        'date': new Date(dateTime).getTime(),
+        'comment': comment
+      }
+    }
+    const res = axios.post('https://localhost:3000/api/submit', JSON.stringify(requestBody), {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
   }
 
   return(
@@ -50,6 +65,12 @@ const Form = () => {
       <div>
         <button disabled={!canSubmit} onClick={() => onSubmit()}>Submit</button>
       </div>
+      {modal ?
+        <Modal
+          closeModal={setModal(!modal)}
+        />
+        : null
+      }
     </div>
   )
 }
