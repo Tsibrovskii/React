@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchToken } from '../actions';
 import Event from './Event';
+import './Events.css';
 
 class Events extends React.Component {
 
@@ -57,10 +58,10 @@ class Events extends React.Component {
       selectedEvent = selectedEvent[0];
     }
     return (
-      <div>
+      <div className="event">
         <Event event={selectedEvent} />
-        <button onClick={this.onPrevious}>Previous</button>
-        <button onClick={this.onNext}>Next</button>
+        <button onClick={this.onPrevious} className="buttonPrevious">Previous</button>
+        <button onClick={this.onNext} className="buttonNext">Next</button>
       </div>
     );
   }
