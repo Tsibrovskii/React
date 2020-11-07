@@ -1,11 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchToken } from '../actions';
+import Event from './Event';
 
 class Events extends React.Component {
-  state = { eventNumber: 0 };
 
-  eventsList = [];
+  constructor() {
+    super();
+    this.state = { eventNumber: 0 };
+    this.eventsList = [];
+  }
 
   componentDidMount() {
     this.props.fetchToken();
@@ -53,8 +57,8 @@ class Events extends React.Component {
       selectedEvent = selectedEvent[0];
     }
     return (
-      <div key={selectedEvent && selectedEvent.uuid}>
-        <h2>{selectedEvent && selectedEvent.date}</h2>
+      <div>
+        <Event event={selectedEvent} />
         <button onClick={this.onPrevious}>Previous</button>
         <button onClick={this.onNext}>Next</button>
       </div>
