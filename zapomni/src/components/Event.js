@@ -19,12 +19,8 @@ class Event extends React.Component {
     return (
       <div key={event && event.uuid}>
         <img src={event && 'https://zapomni.lastick.ru/' + event.poster.path} className="image"/>
-        <div>
-          <span className="fontColor">{event && event.name.ru}</span>
-        </div>
-        <div>
-          <span className="fontColor">{event && event.date}</span>
-        </div>
+        <div className="fontColor">{event && event.name.ru}</div>
+        <div className="fontColor">{event && event.date}</div>
         <button onClick={this.toggleModal} className="buttonMoreInfo">Подробнее</button>
         {this.state.showModal ? 
           <Modal
