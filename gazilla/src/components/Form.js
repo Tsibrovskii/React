@@ -25,7 +25,6 @@ class Form extends React.Component {
   }
 
   handleResponse = (response) => {
-    console.log('in handle');
     if (!response) {
       return;
     }
